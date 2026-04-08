@@ -4,9 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emily Thais Boria Figueroa</title>
+    <meta
+      name="description"
+      content="Emily Thais Boria-Figueroa — Researcher, Scholar, and Advocate in Rehabilitation Counseling at UPR-Ponce."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Mrs+Saint+Delafield&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
@@ -15,7 +22,7 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta
       name="theme-color"
-      content="#ffffff"
+      content="#fffdf8"
       media="(prefers-color-scheme: light)"
     />
     <meta
@@ -25,6 +32,7 @@
     />
 
     <style>
+      /* ── Reset & Custom Properties ── */
       *,
       *::before,
       *::after {
@@ -34,16 +42,14 @@
       }
 
       :root {
-        --color-yellow: #ffd234;
-        --color-yellow-light: #ffe066;
-        --color-orange: #ff9a2e;
-        --color-orange-deep: #ff7a1a;
-        --color-red-orange: #ff5733;
-        --color-red-orange-light: #ff6f4a;
-        --color-magenta: #4d9aff;
-        --color-pink: #66abff;
-        --color-blue: #6e4dff;
-        --font-primary: "Josefin Sans", sans-serif;
+        --bg: #fffdf8;
+        --text: #2d1810;
+        --text-muted: #8b6914;
+        --orange: #ff9a2e;
+        --orange-deep: #ff7a1a;
+        --red-orange: #ff5733;
+        --yellow: #ffd234;
+        --yellow-light: #ffe680;
       }
 
       html,
@@ -53,312 +59,217 @@
       }
 
       body {
-        font-family: var(--font-primary);
-        background: #ffffff;
+        background: var(--bg);
+        background-image: radial-gradient(
+          ellipse at 50% 45%,
+          #fff5e6 0%,
+          var(--bg) 70%
+        );
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
+        min-height: 100vh;
+        min-height: 100dvh;
       }
 
-      /* ── Bubble Canvas ── */
-      .bubbles {
+      /* ── Decorative Flowers ── */
+      .flowers {
         position: fixed;
         inset: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
         z-index: 0;
-        filter: blur(60px);
         pointer-events: none;
       }
 
-      .bubble {
+      .flower {
         position: absolute;
-        border-radius: 50%;
-        will-change: transform, opacity;
         opacity: 0;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        will-change: transform;
       }
 
-      /* ── Individual Bubbles ── */
-
-      /* Yellow cluster */
-      .bubble--1 {
-        width: 320px;
-        height: 320px;
-        background: radial-gradient(
-          circle at 40% 40%,
-          var(--color-yellow-light),
-          var(--color-yellow)
-        );
-        top: -5%;
-        left: -4%;
-        animation:
-          float-1 14s ease-in-out infinite alternate,
-          fade-in 2s 0.2s ease-out forwards;
-      }
-
-      .bubble--2 {
-        width: 180px;
-        height: 180px;
-        background: radial-gradient(
-          circle at 50% 50%,
-          var(--color-yellow),
-          #f5c518
-        );
-        top: 60%;
-        right: 8%;
-        animation:
-          float-2 18s ease-in-out infinite alternate,
-          fade-in 2s 0.6s ease-out forwards;
-      }
-
-      .bubble--3 {
-        width: 240px;
-        height: 240px;
-        background: radial-gradient(
-          circle at 30% 60%,
-          var(--color-yellow-light),
-          var(--color-yellow)
-        );
-        bottom: -8%;
-        left: 35%;
-        animation:
-          float-3 16s ease-in-out infinite alternate,
-          fade-in 2s 0.4s ease-out forwards;
-      }
-
-      /* Orange cluster */
-      .bubble--4 {
+      /* ── Flower Placement ── */
+      .flower--1 {
         width: 380px;
         height: 380px;
-        background: radial-gradient(
-          circle at 60% 30%,
-          var(--color-orange),
-          var(--color-orange-deep)
-        );
-        top: 10%;
-        right: -6%;
+        top: -8%;
+        left: -6%;
         animation:
-          float-4 20s ease-in-out infinite alternate,
-          fade-in 2s 0.3s ease-out forwards;
+          flower-in-55 1.2s 0s ease-out forwards,
+          breathe-1 24s 1.2s ease-in-out infinite alternate;
       }
 
-      .bubble--5 {
-        width: 200px;
-        height: 200px;
-        background: radial-gradient(
-          circle at 50% 50%,
-          #ffb347,
-          var(--color-orange)
-        );
-        bottom: 15%;
-        left: -3%;
+      .flower--2 {
+        width: 420px;
+        height: 420px;
+        bottom: -10%;
+        right: -8%;
         animation:
-          float-5 15s ease-in-out infinite alternate,
-          fade-in 2s 0.8s ease-out forwards;
+          flower-in-50 1.2s 0.15s ease-out forwards,
+          breathe-2 28s 1.35s ease-in-out infinite alternate;
       }
 
-      .bubble--6 {
-        width: 140px;
-        height: 140px;
-        background: radial-gradient(
-          circle at 40% 40%,
-          var(--color-orange),
-          var(--color-orange-deep)
-        );
-        top: 45%;
-        left: 20%;
-        animation:
-          float-6 12s ease-in-out infinite alternate,
-          fade-in 2s 1s ease-out forwards;
-      }
-
-      /* Red-Orange cluster */
-      .bubble--7 {
-        width: 280px;
-        height: 280px;
-        background: radial-gradient(
-          circle at 55% 45%,
-          var(--color-red-orange-light),
-          var(--color-red-orange)
-        );
-        bottom: -4%;
-        right: -2%;
-        animation:
-          float-7 17s ease-in-out infinite alternate,
-          fade-in 2s 0.5s ease-out forwards;
-      }
-
-      .bubble--8 {
-        width: 160px;
-        height: 160px;
-        background: radial-gradient(
-          circle at 50% 50%,
-          var(--color-red-orange),
-          #e84c2b
-        );
-        top: -3%;
-        left: 50%;
-        animation:
-          float-8 13s ease-in-out infinite alternate,
-          fade-in 2s 0.7s ease-out forwards;
-      }
-
-      .bubble--9 {
-        width: 220px;
-        height: 220px;
-        background: radial-gradient(
-          circle at 35% 55%,
-          var(--color-red-orange-light),
-          var(--color-red-orange)
-        );
-        top: 30%;
-        left: 55%;
-        animation:
-          float-9 19s ease-in-out infinite alternate,
-          fade-in 2s 0.9s ease-out forwards;
-      }
-
-      .bubble--10 {
-        width: 100px;
-        height: 100px;
-        background: radial-gradient(
-          circle at 50% 50%,
-          var(--color-yellow),
-          var(--color-orange)
-        );
-        top: 70%;
-        left: 42%;
-        animation:
-          float-10 11s ease-in-out infinite alternate,
-          fade-in 2s 1.1s ease-out forwards;
-      }
-
-      .bubble--11 {
+      .flower--3 {
         width: 260px;
         height: 260px;
-        background: radial-gradient(
-          circle at 60% 40%,
-          var(--color-orange),
-          var(--color-red-orange-light)
-        );
-        top: 55%;
-        left: 65%;
+        top: -5%;
+        right: -4%;
         animation:
-          float-11 16s ease-in-out infinite alternate,
-          fade-in 2s 0.35s ease-out forwards;
+          flower-in-30 1.2s 0.3s ease-out forwards,
+          breathe-3 22s 1.5s ease-in-out infinite alternate;
       }
 
-      /* ── Float Keyframes ── */
-      @keyframes float-1 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(80px, 60px) scale(1.08);
-        }
+      .flower--4 {
+        width: 300px;
+        height: 300px;
+        bottom: -6%;
+        left: -5%;
+        animation:
+          flower-in-35 1.2s 0.45s ease-out forwards,
+          breathe-4 26s 1.65s ease-in-out infinite alternate;
       }
 
-      @keyframes float-2 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(-50px, -70px) scale(1.12);
-        }
+      .flower--5 {
+        width: 160px;
+        height: 160px;
+        top: 40%;
+        left: -3%;
+        animation:
+          flower-in-20 1.2s 0.6s ease-out forwards,
+          breathe-5 20s 1.8s ease-in-out infinite alternate;
       }
 
-      @keyframes float-3 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(60px, -40px) scale(0.95);
-        }
+      .flower--6 {
+        width: 200px;
+        height: 200px;
+        bottom: 15%;
+        right: -2%;
+        animation:
+          flower-in-25 1.2s 0.75s ease-out forwards,
+          breathe-6 30s 1.95s ease-in-out infinite alternate;
       }
 
-      @keyframes float-4 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(-70px, 80px) scale(1.06);
-        }
-      }
-
-      @keyframes float-5 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(40px, -50px) scale(1.1);
-        }
-      }
-
-      @keyframes float-6 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(30px, 40px) scale(1.15);
-        }
-      }
-
-      @keyframes float-7 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(-60px, -30px) scale(1.04);
-        }
-      }
-
-      @keyframes float-8 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(-40px, 60px) scale(1.08);
-        }
-      }
-
-      @keyframes float-9 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(50px, -45px) scale(0.92);
-        }
-      }
-
-      @keyframes float-10 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(-30px, 35px) scale(1.2);
-        }
-      }
-
-      @keyframes float-11 {
-        0% {
-          transform: translate(0, 0) scale(1);
-        }
-        100% {
-          transform: translate(-55px, -60px) scale(1.05);
-        }
-      }
-
-      @keyframes fade-in {
+      /* ── Flower Fade-In (each targets a unique final opacity) ── */
+      @keyframes flower-in-55 {
         from {
           opacity: 0;
+          transform: scale(0.85);
         }
         to {
-          opacity: 0.7;
+          opacity: 0.55;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes flower-in-50 {
+        from {
+          opacity: 0;
+          transform: scale(0.85);
+        }
+        to {
+          opacity: 0.5;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes flower-in-35 {
+        from {
+          opacity: 0;
+          transform: scale(0.85);
+        }
+        to {
+          opacity: 0.35;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes flower-in-30 {
+        from {
+          opacity: 0;
+          transform: scale(0.85);
+        }
+        to {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes flower-in-25 {
+        from {
+          opacity: 0;
+          transform: scale(0.85);
+        }
+        to {
+          opacity: 0.25;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes flower-in-20 {
+        from {
+          opacity: 0;
+          transform: scale(0.85);
+        }
+        to {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+      }
+
+      /* ── Ambient Breathing (slow, unique per flower) ── */
+      @keyframes breathe-1 {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(3deg) scale(1.03);
+        }
+      }
+
+      @keyframes breathe-2 {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(-2.5deg) scale(1.04);
+        }
+      }
+
+      @keyframes breathe-3 {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(2deg) scale(1.02);
+        }
+      }
+
+      @keyframes breathe-4 {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(-3deg) scale(1.03);
+        }
+      }
+
+      @keyframes breathe-5 {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(2.5deg) scale(1.05);
+        }
+      }
+
+      @keyframes breathe-6 {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(-2deg) scale(1.03);
         }
       }
 
@@ -368,91 +279,128 @@
         z-index: 1;
         text-align: center;
         padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .name {
-        font-weight: 500;
-        font-size: clamp(1.8rem, 1rem + 4vw, 4.5rem);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #1a1a1a;
-        line-height: 1.3;
+      /* ── Portrait ── */
+      .portrait {
+        width: clamp(160px, 20vw, 220px);
+        height: clamp(160px, 20vw, 220px);
+        border-radius: 50%;
+        padding: 4px;
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
+        box-shadow: 0 8px 32px rgba(255, 154, 46, 0.2);
+        margin-bottom: 1.5rem;
         opacity: 0;
-        font-family: 'Crimson Pro', serif;
-        font-weight: 600;
-        animation: name-reveal 1.6s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: reveal 0.8s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
-      .name span {
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
         display: block;
-        font-weight: 600;
-        font-size: clamp(2.2rem, 1.2rem + 5vw, 5.5rem);
-        letter-spacing: 0.06em;
+      }
+
+      /* ── Name ── */
+      .name {
+        font-family: "Mrs Saint Delafield", cursive;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.15;
+      }
+
+      .name__first {
+        display: block;
+        font-size: clamp(2.5rem, 2rem + 5vw, 5.5rem);
+        color: var(--text);
+        opacity: 0;
+        animation: reveal 0.7s 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .name__last {
+        display: block;
+        font-size: clamp(2rem, 1.5rem + 4vw, 4.5rem);
         background: linear-gradient(
-          90deg,
-          var(--color-magenta),
-          var(--color-pink),
-          var(--color-blue)
+          135deg,
+          var(--orange),
+          var(--red-orange),
+          var(--yellow)
         );
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-top: 0.1em;
+        opacity: 0;
+        animation: reveal 0.7s 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
-      .divider {
-        width: 60px;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          var(--color-yellow),
-          var(--color-orange),
-          var(--color-red-orange)
-        );
-        margin: 1.2rem auto 0;
+      /* ── Subtitle ── */
+      .subtitle {
+        font-family: "Josefin Sans", sans-serif;
+        font-weight: 400;
+        font-size: clamp(0.65rem, 0.5rem + 0.7vw, 0.9rem);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-top: 0.8rem;
         opacity: 0;
-        animation: divider-grow 1.2s 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        transform-origin: center;
+        animation: reveal 0.6s 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
       /* ── CV Button ── */
       .cv-btn {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
         margin-top: 2rem;
-        padding: 0.8rem 2rem;
-        font-family: var(--font-primary);
-        font-size: 0.9rem;
+        padding: 0.9rem 2.4rem;
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 0.85rem;
         font-weight: 600;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
         text-decoration: none;
-        color: #1a1a1a;
-        background: rgba(255, 255, 255, 0.8);
-        border: 2px solid #1a1a1a;
+        color: #ffffff;
+        background: linear-gradient(135deg, var(--orange), var(--red-orange));
+        border: none;
         border-radius: 50px;
         cursor: pointer;
+        box-shadow: 0 4px 16px rgba(255, 87, 51, 0.3);
         opacity: 0;
-        animation: btn-reveal 1s 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: reveal 0.6s 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         transition:
-          background 0.3s ease,
-          color 0.3s ease,
-          transform 0.2s ease;
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
       }
 
       .cv-btn:hover {
-        background: #1a1a1a;
-        color: #ffffff;
         transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(255, 87, 51, 0.4);
       }
 
       .cv-btn:active {
         transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(255, 87, 51, 0.3);
       }
 
-      @keyframes name-reveal {
+      .cv-btn:focus-visible {
+        outline: 2px solid var(--orange);
+        outline-offset: 3px;
+      }
+
+      .cv-btn__icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* ── Content Entrance ── */
+      @keyframes reveal {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(20px);
         }
         to {
           opacity: 1;
@@ -460,42 +408,54 @@
         }
       }
 
-      @keyframes divider-grow {
-        from {
-          opacity: 0;
-          transform: scaleX(0);
-        }
-        to {
-          opacity: 1;
-          transform: scaleX(1);
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .flower--5,
+        .flower--6 {
+          display: none;
         }
       }
 
-      @keyframes btn-reveal {
-        from {
-          opacity: 0;
-          transform: translateY(15px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
+      @media (max-width: 480px) {
+        .portrait {
+          width: 150px;
+          height: 150px;
         }
       }
 
       /* ── Reduced Motion ── */
       @media (prefers-reduced-motion: reduce) {
-        .bubble,
-        .name,
-        .divider,
-        .cv-btn {
+        *,
+        *::before,
+        *::after {
           animation-duration: 0.01ms !important;
           animation-delay: 0ms !important;
           animation-iteration-count: 1 !important;
-          opacity: 0.7;
         }
 
-        .name,
-        .divider,
+        .flower--1 {
+          opacity: 0.55;
+        }
+        .flower--2 {
+          opacity: 0.5;
+        }
+        .flower--3 {
+          opacity: 0.3;
+        }
+        .flower--4 {
+          opacity: 0.35;
+        }
+        .flower--5 {
+          opacity: 0.2;
+        }
+        .flower--6 {
+          opacity: 0.25;
+        }
+
+        .portrait,
+        .name__first,
+        .name__last,
+        .subtitle,
         .cv-btn {
           opacity: 1;
           transform: none;
@@ -504,27 +464,113 @@
     </style>
   </head>
   <body>
-    <div class="bubbles" aria-hidden="true">
-      <div class="bubble bubble--1"></div>
-      <div class="bubble bubble--2"></div>
-      <div class="bubble bubble--3"></div>
-      <div class="bubble bubble--4"></div>
-      <div class="bubble bubble--5"></div>
-      <div class="bubble bubble--6"></div>
-      <div class="bubble bubble--7"></div>
-      <div class="bubble bubble--8"></div>
-      <div class="bubble bubble--9"></div>
-      <div class="bubble bubble--10"></div>
-      <div class="bubble bubble--11"></div>
+    <!-- Shared SVG definitions: gradients + reusable flower shape from logo -->
+    <svg style="position: absolute; width: 0; height: 0" aria-hidden="true">
+      <defs>
+        <linearGradient id="fg-a" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ff9a2e" />
+          <stop offset="100%" stop-color="#ffd234" />
+        </linearGradient>
+        <linearGradient id="fg-b" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ff7a1a" />
+          <stop offset="100%" stop-color="#ffb347" />
+        </linearGradient>
+        <linearGradient id="fg-c" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffd234" />
+          <stop offset="100%" stop-color="#ffe680" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- Decorative flowers (logo flower shape at varying sizes, positions, opacities) -->
+    <div class="flowers" aria-hidden="true">
+      <!-- Flower 1: Top-left corner, orange → yellow -->
+      <svg class="flower flower--1" viewBox="0 0 113 114">
+        <path
+          transform="translate(-57.42,-112.27)"
+          fill="url(#fg-a)"
+          d="M59.66 164.81c15.86-11.76 63.39-9.83 54.72 7.83-9 18.34-56.01-48.02-35.8-44.93 19.46 2.97 52.55 38.07 33.72 44.06-19.55 6.22-7.27-73.51 5.22-57.33 12.03 15.57 11.07 64.53-6.79 55.81-18.54-9.05 47.37-57.24 44.73-36.88-2.55 19.6-38.63 52.25-44.63 33.49-6.22-19.48 73.36-6.62 56.91 5.79-15.85 11.95-63.45 10.07-54.54-7.61 9.25-18.36 56.44 47.19 36.1 44.49-19.59-2.6-52.39-38.17-33.45-44.16 19.67-6.21 6.27 74.29-5.8 57.68-11.63-16-9.66-64.53 8.02-55.58 18.36 9.3-48.32 57.1-45.63 36.73 2.59-19.62 38.15-52.14 44.32-33.25 6.4 19.61-73.55 6.07-57.08-6.14z"
+        />
+      </svg>
+
+      <!-- Flower 2: Bottom-right corner, deep orange → orange -->
+      <svg class="flower flower--2" viewBox="0 0 113 114">
+        <path
+          transform="translate(-57.42,-112.27)"
+          fill="url(#fg-b)"
+          d="M59.66 164.81c15.86-11.76 63.39-9.83 54.72 7.83-9 18.34-56.01-48.02-35.8-44.93 19.46 2.97 52.55 38.07 33.72 44.06-19.55 6.22-7.27-73.51 5.22-57.33 12.03 15.57 11.07 64.53-6.79 55.81-18.54-9.05 47.37-57.24 44.73-36.88-2.55 19.6-38.63 52.25-44.63 33.49-6.22-19.48 73.36-6.62 56.91 5.79-15.85 11.95-63.45 10.07-54.54-7.61 9.25-18.36 56.44 47.19 36.1 44.49-19.59-2.6-52.39-38.17-33.45-44.16 19.67-6.21 6.27 74.29-5.8 57.68-11.63-16-9.66-64.53 8.02-55.58 18.36 9.3-48.32 57.1-45.63 36.73 2.59-19.62 38.15-52.14 44.32-33.25 6.4 19.61-73.55 6.07-57.08-6.14z"
+        />
+      </svg>
+
+      <!-- Flower 3: Top-right, yellow → pale yellow -->
+      <svg class="flower flower--3" viewBox="0 0 113 114">
+        <path
+          transform="translate(-57.42,-112.27)"
+          fill="url(#fg-c)"
+          d="M59.66 164.81c15.86-11.76 63.39-9.83 54.72 7.83-9 18.34-56.01-48.02-35.8-44.93 19.46 2.97 52.55 38.07 33.72 44.06-19.55 6.22-7.27-73.51 5.22-57.33 12.03 15.57 11.07 64.53-6.79 55.81-18.54-9.05 47.37-57.24 44.73-36.88-2.55 19.6-38.63 52.25-44.63 33.49-6.22-19.48 73.36-6.62 56.91 5.79-15.85 11.95-63.45 10.07-54.54-7.61 9.25-18.36 56.44 47.19 36.1 44.49-19.59-2.6-52.39-38.17-33.45-44.16 19.67-6.21 6.27 74.29-5.8 57.68-11.63-16-9.66-64.53 8.02-55.58 18.36 9.3-48.32 57.1-45.63 36.73 2.59-19.62 38.15-52.14 44.32-33.25 6.4 19.61-73.55 6.07-57.08-6.14z"
+        />
+      </svg>
+
+      <!-- Flower 4: Bottom-left, orange → yellow -->
+      <svg class="flower flower--4" viewBox="0 0 113 114">
+        <path
+          transform="translate(-57.42,-112.27)"
+          fill="url(#fg-a)"
+          d="M59.66 164.81c15.86-11.76 63.39-9.83 54.72 7.83-9 18.34-56.01-48.02-35.8-44.93 19.46 2.97 52.55 38.07 33.72 44.06-19.55 6.22-7.27-73.51 5.22-57.33 12.03 15.57 11.07 64.53-6.79 55.81-18.54-9.05 47.37-57.24 44.73-36.88-2.55 19.6-38.63 52.25-44.63 33.49-6.22-19.48 73.36-6.62 56.91 5.79-15.85 11.95-63.45 10.07-54.54-7.61 9.25-18.36 56.44 47.19 36.1 44.49-19.59-2.6-52.39-38.17-33.45-44.16 19.67-6.21 6.27 74.29-5.8 57.68-11.63-16-9.66-64.53 8.02-55.58 18.36 9.3-48.32 57.1-45.63 36.73 2.59-19.62 38.15-52.14 44.32-33.25 6.4 19.61-73.55 6.07-57.08-6.14z"
+        />
+      </svg>
+
+      <!-- Flower 5: Mid-left edge, yellow → pale yellow -->
+      <svg class="flower flower--5" viewBox="0 0 113 114">
+        <path
+          transform="translate(-57.42,-112.27)"
+          fill="url(#fg-c)"
+          d="M59.66 164.81c15.86-11.76 63.39-9.83 54.72 7.83-9 18.34-56.01-48.02-35.8-44.93 19.46 2.97 52.55 38.07 33.72 44.06-19.55 6.22-7.27-73.51 5.22-57.33 12.03 15.57 11.07 64.53-6.79 55.81-18.54-9.05 47.37-57.24 44.73-36.88-2.55 19.6-38.63 52.25-44.63 33.49-6.22-19.48 73.36-6.62 56.91 5.79-15.85 11.95-63.45 10.07-54.54-7.61 9.25-18.36 56.44 47.19 36.1 44.49-19.59-2.6-52.39-38.17-33.45-44.16 19.67-6.21 6.27 74.29-5.8 57.68-11.63-16-9.66-64.53 8.02-55.58 18.36 9.3-48.32 57.1-45.63 36.73 2.59-19.62 38.15-52.14 44.32-33.25 6.4 19.61-73.55 6.07-57.08-6.14z"
+        />
+      </svg>
+
+      <!-- Flower 6: Mid-right near bottom, deep orange → orange -->
+      <svg class="flower flower--6" viewBox="0 0 113 114">
+        <path
+          transform="translate(-57.42,-112.27)"
+          fill="url(#fg-b)"
+          d="M59.66 164.81c15.86-11.76 63.39-9.83 54.72 7.83-9 18.34-56.01-48.02-35.8-44.93 19.46 2.97 52.55 38.07 33.72 44.06-19.55 6.22-7.27-73.51 5.22-57.33 12.03 15.57 11.07 64.53-6.79 55.81-18.54-9.05 47.37-57.24 44.73-36.88-2.55 19.6-38.63 52.25-44.63 33.49-6.22-19.48 73.36-6.62 56.91 5.79-15.85 11.95-63.45 10.07-54.54-7.61 9.25-18.36 56.44 47.19 36.1 44.49-19.59-2.6-52.39-38.17-33.45-44.16 19.67-6.21 6.27 74.29-5.8 57.68-11.63-16-9.66-64.53 8.02-55.58 18.36 9.3-48.32 57.1-45.63 36.73 2.59-19.62 38.15-52.14 44.32-33.25 6.4 19.61-73.55 6.07-57.08-6.14z"
+        />
+      </svg>
     </div>
 
+    <!-- Main content -->
     <main class="content">
+      <div class="portrait">
+        <img
+          src="images/emily-portrait.webp"
+          alt="Portrait of Emily Thais Boria-Figueroa"
+          width="220"
+          height="220"
+        />
+      </div>
+
       <h1 class="name">
-        Emily Thais <br />
-        Boria-Figueroa
+        <span class="name__first">Emily Thais</span>
+        <span class="name__last">Boria-Figueroa</span>
       </h1>
-      
-      <a href="CV.html" class="cv-btn">View CV</a>
+
+      <p class="subtitle">Researcher &middot; Scholar &middot; Advocate</p>
+
+      <a href="CV.html" class="cv-btn">
+        View CV
+        <svg
+          class="cv-btn__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </a>
     </main>
   </body>
 </html>
